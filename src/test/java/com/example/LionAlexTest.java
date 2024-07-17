@@ -2,7 +2,6 @@ package com.example;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
@@ -11,8 +10,6 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
 public class LionAlexTest {
-    @Mock
-    private Feline feline;
     private LionAlex lionAlex;
     private final int expectedLionChildren = 0;
     private final List<String> expectedFriends = List.of("Марти", "Глория", "Мелман");
@@ -20,28 +17,28 @@ public class LionAlexTest {
 
     @Test
     public void testGetKittens() throws Exception {
-        lionAlex = new LionAlex(feline);
+        lionAlex = new LionAlex(new Feline());
         int actual = lionAlex.getKittens();
 
-        assertEquals("Количество лвят не соответствует ожидаемому",
+        assertEquals("Количество львят не соответствует ожидаемому",
                 expectedLionChildren, actual);
     }
 
     @Test
     public void testGetFriends() throws Exception {
-        lionAlex = new LionAlex(feline);
+        lionAlex = new LionAlex(new Feline());
         List<String> actual = lionAlex.getFriends();
 
-        assertEquals("писок друзей не соответствует ожидаемому",
+        assertEquals("Список друзей не соответствует ожидаемому",
                 expectedFriends, actual);
     }
 
     @Test
     public void testGetPlaceOfLiving() throws Exception {
-        lionAlex = new LionAlex(feline);
+        lionAlex = new LionAlex(new Feline());
         String actual = lionAlex.getPlaceOfLiving();
 
         assertEquals("Некорректное место проживания льва",
-                expectedPlace,actual);
+                expectedPlace, actual);
     }
 }
